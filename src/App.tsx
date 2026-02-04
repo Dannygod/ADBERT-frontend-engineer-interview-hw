@@ -1,19 +1,15 @@
-import ButtonGroupComponent from './components/ButtonGroupComponent';
-import Box from '@mui/material/Box';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import ChartPage from './pages/ChartPage';
 
 function App() {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '100vh',
-        backgroundColor: '#f5f5f5',
-      }}
-    >
-      <ButtonGroupComponent />
-    </Box>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/chart" element={<ChartPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Box, Typography, Paper, Button, ButtonGroup } from '@mui/material';
+import { Box, Typography, Paper } from '@mui/material';
 import {
   LineChart,
   Line,
@@ -30,26 +29,7 @@ const SAMPLE_DATA: PriceData[] = [
   { date: '2/4', 比特幣: 98200, 以太幣: 2680 },
 ];
 
-interface TimeRange {
-  days: number;
-  label: string;
-}
-
-const TIME_RANGES: TimeRange[] = [
-  { days: 7, label: '7天' },
-  { days: 30, label: '1個月' },
-  { days: 90, label: '3個月' },
-  { days: 365, label: '1年' },
-];
-
 function ChartPage() {
-  const [selectedDays, setSelectedDays] = useState(7);
-
-  const getTimeRangeLabel = () => {
-    const range = TIME_RANGES.find(r => r.days === selectedDays);
-    return range ? range.label : `${selectedDays}天`;
-  };
-
   return (
     <Box
       sx={{
@@ -73,27 +53,8 @@ function ChartPage() {
           CoinGecko 加密貨幣價格走勢圖
         </Typography>
         <Typography variant="subtitle1" align="center" color="text.secondary" gutterBottom>
-          比特幣 vs 以太幣（美元計價）- {getTimeRangeLabel()}
+          比特幣 vs 以太幣（美元計價）- 7天
         </Typography>
-
-        {/* Time Range Buttons */}
-        {/* <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2, mb: 3 }}>
-          <ButtonGroup variant="contained" aria-label="時間範圍選擇">
-            {TIME_RANGES.map((range) => (
-              <Button
-                key={range.days}
-                onClick={() => setSelectedDays(range.days)}
-                variant={selectedDays === range.days ? 'contained' : 'outlined'}
-                sx={{
-                  backgroundColor: selectedDays === range.days ? 'primary.main' : 'transparent',
-                  color: selectedDays === range.days ? 'white' : 'primary.main',
-                }}
-              >
-                {range.label}
-              </Button>
-            ))}
-          </ButtonGroup>
-        </Box> */}
 
         <Box sx={{ width: '100%', height: 400, mt: 2 }}>
           <ResponsiveContainer width="100%" height="100%">
